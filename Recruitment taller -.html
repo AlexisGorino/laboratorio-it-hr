@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio de IT & HR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link.active { color: #38bdf8; border-bottom-color: #38bdf8; font-weight: 600; }
+        .card-flip { transition: transform 0.6s; transform-style: preserve-3d; }
+        .card:hover .card-flip { transform: rotateY(180deg); }
+        .card-front, .card-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; width: 100%; height: 100%; top: 0; left: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .card-back { transform: rotateY(180deg); }
+        .accordion-content { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s ease-out; }
+        .accordion-content.open { grid-template-rows: 1fr; }
+        .accordion-content div { overflow: hidden; }
+        .accordion-toggle .icon-arrow { transform: rotate(0deg); transition: transform 0.3s ease; }
+        .accordion-toggle.open .icon-arrow { transform: rotate(180deg); }
+        .bg-about { background-color: #0d1e2e; }
+        .bg-recruiter { background-color: #1c2b3e; }
+        .bg-challenge { background-color: #2b1c3e; }
+        .bg-tools { background-color: #3e2b1c; }
+        .bg-gradient-about { background-image: linear-gradient(45deg, #0b1a2a 0%, #1e3a8a 100%); }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200" id="main-body">
+
+    <div class="container mx-auto max-w-6xl p-4 sm:p-6 lg:p-8">
+
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">Laboratorio de IT & HR</h1>
+            <p class="mt-2 text-lg text-sky-300">Aplicando conocimiento en la cancha</p>
+        </header>
+
+        <nav class="mb-8 border-b border-slate-700">
+            <ul class="flex flex-wrap justify-center -mb-px" id="nav-list"></ul>
+        </nav>
+
+        <main>
+            <!-- 'Sobre mí' Section -->
+            <section id="tab-about" class="tab-content active">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">¿Quién soy?</h2>
+                    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Un poco sobre mi background y mis pasiones.</p>
+                </div>
+                <div class="bg-gradient-about rounded-lg shadow-xl p-8 flex flex-col md:flex-row items-center md:items-start gap-8 transform transition duration-500 ease-in-out hover:scale-105">
+                    <div class="flex-shrink-0">
+                        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGzUnz9Jr4Wyg/profile-displayphoto-shrink_800_800/B4DZOwvRjDHYAg-/0/1733837003710?e=1757548800&v=beta&t=yNSepUynOlsoPJOJ-R-aSG2QLsc2rUVdzBwMG3x9pbo" alt="Ale Gorino" class="w-40 h-40 rounded-full object-cover border-4 border-sky-600">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-white mb-2">Ale Gorino</h3>
+                        <p class="text-sm text-slate-400">Actualmente Lider de Selección y Responsable de RRHH en <a href="https://www.squad.com.ar" class="text-sky-400 hover:underline" target="_blank">SQUAD</a></p>
+                        <p class="mt-4 text-slate-300">
+                            Un apasionado por el poder transformador de las personas, las culturas organizacionales y la tecnología.
+                        </p>
+                        <p class="mt-2 text-slate-300">
+                            🎓 Licenciado en Recursos Humanos, me mantengo en constante aprendizaje, explorando las fronteras entre lo técnico y lo humano. Creo firmemente que las personas son el motor del cambio y que las habilidades blandas, combinadas con la tecnología, pueden llevar a las organizaciones a un siguiente nivel. 🚀
+                        </p>
+                        <p class="mt-2 text-slate-300">
+                            🌟 Me mueve todo lo que implique <span class="font-bold">crear</span>, <span class="font-bold">transformar</span> y <span class="font-bold">conectar</span>, ya sea diseñando estrategias que potencien equipos o liderando proyectos que impulsen la cultura y los procesos hacia un futuro más ágil y humano.
+                        </p>
+                        <div class="mt-6">
+                            <h4 class="font-bold text-lg text-sky-400">Temas que me apasionan:</h4>
+                            <ul class="mt-2 text-slate-300 space-y-1 list-inside">
+                                <li><span class="font-bold">1️⃣ IT Talent Acquisition</span> - Conectar pasion con tecnología.</li>
+                                <li><span class="font-bold">2️⃣ Employer Branding</span> - Diseñar culturas y experiencias que enamoran y retienen talento.</li>
+                                <li><span class="font-bold">3️⃣ Personal Branding</span> - Ayudar a profesionales a construir una marca que refleje su esencia y propósito.</li>
+                                <li><span class="font-bold">4️⃣ Change Management</span> - Liderar la evolución organizacional.</li>
+                                <li><span class="font-bold">5️⃣ Empleabilidad</span> - Conectar personas con su próximo gran desafío.</li>
+                            </ul>
+                        </div>
+                        <p class="mt-6 text-slate-300 italic">
+                            Creo en el poder de las conversaciones. Por eso, amo conectar con las personas y sumar valor juntos.
+                        </p>
+                        <p class="mt-2 text-slate-300 font-bold">
+                            "El futuro es de quienes se animan a repensar, reinventar y actuar."
+                        </p>
+                        <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
+                            <a href="https://www.linkedin.com/in/alegorino" target="_blank" class="bg-sky-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-sky-700 transition-colors">LinkedIn</a>
+                            <a href="https://www.instagram.com/ale.gorino" target="_blank" class="bg-fuchsia-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-fuchsia-700 transition-colors">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- 'La Base del recruitment' Section -->
+            <section id="tab1" class="tab-content">
+                <!-- Segment 1: Desarrollador -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">¿Qué hay en el mundo del desarrollador?</h2>
+                    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Olvidate de los mitos, entendé la analogía.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Card Frontend -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">🖥️</div>
+                                <h3 class="text-xl font-bold text-sky-400">Frontend</h3>
+                                <p class="text-slate-400 mt-2">La cara visible de la app. Todo lo que la persona usuaria ve e interactúa directamente.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es la fachada de la casa: las ventanas, la puerta, la pintura. Lo que le da el aspecto y permite interactuar con el exterior.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Backend -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">⚙️</div>
+                                <h3 class="text-xl font-bold text-sky-400">Backend</h3>
+                                <p class="text-slate-400 mt-2">La lógica invisible. Lo que hace que todo funcione por detrás: servidores, bases de datos y lógica de negocio.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Son las cañerías, la electricidad y los cimientos. No se ven, pero sin ellos la casa no funciona.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Fullstack -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">🛠️</div>
+                                <h3 class="text-xl font-bold text-sky-400">Fullstack</h3>
+                                <p class="text-slate-400 mt-2">El perfil todoterreno. Se desenvuelve tanto en el frontend como en el backend.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es el arquitecto que también es maestro mayor de obras. Diseña los planos y también sabe cómo construir la estructura.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segment 2: Infraestructura y Ciberseguridad -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">¿Qué hay en el mundo de infraestructura y ciberseguridad?</h2>
+                    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Dos pilares clave que mantienen el sistema robusto y seguro.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+                    <!-- Card Infraestructura -->
+                     <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">📡</div>
+                                <h3 class="text-xl font-bold text-sky-400">Infraestructura</h3>
+                                <p class="text-slate-400 mt-2">Se encarga de servidores, redes y bases de datos. Garantiza que la arquitectura sea sólida y escalable.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es el equipo que construye y mantiene la autopista para que los autos (datos) puedan viajar sin problemas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Ciberseguridad -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">🔒</div>
+                                <h3 class="text-xl font-bold text-sky-400">Ciberseguridad</h3>
+                                <p class="text-slate-400 mt-2">Protege los sistemas y datos de ataques. Se enfoca en la prevención, detección y respuesta a amenazas.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Son los guardias de seguridad del banco. Se aseguran de que nadie robe el dinero (los datos).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segment 3: Testing y Funcional -->
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">¿Qué hay en el mundo de testing y funcional?</h2>
+                    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">Garantizando que el software funcione de manera impecable y cumpla su propósito.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                    <!-- Card QA Manual -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">🔎</div>
+                                <h3 class="text-xl font-bold text-sky-400">QA Manual</h3>
+                                <p class="text-slate-400 mt-2">Prueba el software manualmente para encontrar errores y asegurar la calidad desde la perspectiva del usuario.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es el catador que prueba la comida. Se asegura de que cada plato (función) esté perfecto antes de servirlo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card QA Automation -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">🤖</div>
+                                <h3 class="text-xl font-bold text-sky-400">QA Automation</h3>
+                                <p class="text-slate-400 mt-2">Crea scripts y herramientas para automatizar pruebas, lo que permite una validación más rápida y eficiente.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es el robot que realiza las pruebas. Un "catador" incansable que repite el proceso miles de veces en segundos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Analista Funcional -->
+                    <div class="card bg-slate-800 rounded-lg shadow-lg p-6 min-h-[14rem] perspective-[1000px] relative">
+                        <div class="card-flip w-full h-full">
+                            <div class="card-front bg-slate-800 text-slate-200">
+                                <div class="text-5xl mb-4">📝</div>
+                                <h3 class="text-xl font-bold text-sky-400">Analista Funcional</h3>
+                                <p class="text-slate-400 mt-2">Traduce las necesidades del negocio en requisitos técnicos claros para el equipo de desarrollo.</p>
+                            </div>
+                            <div class="card-back bg-sky-600 text-white rounded-lg p-4">
+                                <h4 class="font-bold text-lg">Analogía</h4>
+                                <p class="mt-2 text-center">Es el arquitecto que escucha al cliente (negocio) y crea los planos (requisitos) para que el constructor (desarrollador) pueda trabajar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">El Diccionario Básico del Reclutador</h2>
+                    <p class="mt-2 text-slate-400 max-w-2xl mx-auto">No necesitas ser un experto en todo, solo entender cada término a fondo para potenciar tu búsqueda.</p>
+                </div>
+                <div id="accordion" class="max-w-4xl mx-auto grid md:grid-cols-2 gap-4">
+                    <!-- Accordion items will be generated by JS -->
+                </div>
+            </section>
+
+            <!-- 'Challenge para Recruitment' Section -->
+            <section id="tab2" class="tab-content">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">Simulador de recruitment</h2>
+                    <p class="mt-2 text-slate-400 max-w-3xl mx-auto">Este es tu espacio de práctica aleatoria para analizar un pequeño requisito de un perfil y entrenar tu ojo para encontrarlo.</p>
+                </div>
+
+                <div class="bg-slate-800 rounded-lg shadow-xl p-8">
+                    <div class="text-center">
+                        <button id="generate-challenge" class="bg-sky-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-sky-700 transition-colors">Generar un Nuevo Challenge</button>
+                    </div>
+
+                    <div id="challenge-card" class="mt-8 p-6 bg-slate-700 border-l-4 border-sky-500 rounded-r-lg hidden">
+                        <h3 class="text-xl font-bold text-slate-200">Tu Misión:</h3>
+                        <p id="challenge-text" class="mt-2 text-slate-300"></p>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-slate-700">
+                        <h3 class="text-xl font-semibold text-slate-200">Paso 1: Definí tu estrategia</h3>
+                        <p class="text-slate-400 mt-1">Usá los términos del desafío para construir tu búsqueda booleana. Pensá en qué plataformas buscarías (LinkedIn, GitHub, etc.).</p>
+                    </div>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold text-slate-200">Paso 2: Redactá tu mensaje de contacto</h3>
+                        <p class="text-slate-400 mt-1">Recordá los principios: personalizá, sé directo y breve. Escribí tu borrador acá abajo.</p>
+                        <textarea id="contact-message" class="w-full mt-4 p-3 border border-fuchsia-400 bg-slate-900 text-fuchsia-200 rounded-lg focus:ring-2 focus:ring-fuchsia-400 focus:border-fuchsia-400 transition" rows="8" placeholder="Hola [Nombre del Candidato], vi tu perfil y me impresionó tu proyecto en [menciona algo específico]. En [tu empresa] estamos buscando a alguien con tu experiencia para..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 'Kit de Herramientas' Section -->
+            <section id="tab3" class="tab-content">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-sky-400">Tu Kit de Herramientas Esencial</h2>
+                    <p class="mt-2 text-slate-400 max-w-3xl mx-auto">Aquí tenés los conceptos clave y las mejores prácticas para que nunca te falten recursos en tu día a día como recruiter.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-slate-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-sky-400 mb-4">¿Dónde Viven los Talentos?</h3>
+                        <p class="text-slate-400 mb-6">El buen cazador conoce los mejores terrenos. No te limites a un solo lugar.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-4">🔗</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">LinkedIn</h4>
+                                    <p class="text-slate-400">Es tu ventana al CV profesional, pero no te quedes ahí. Usalo para hacer <span class="font-bold">social listening</span>: seguí a los referentes, entendé las tendencias de las empresas y detectá quiénes interactúa con el contenido de las comunidades. Es un termómetro del mercado, no solo una base de datos.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-4">📦</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">GitHub</h4>
+                                    <p class="text-slate-400">El <span class="font-bold">portafolio público</span> donde el código habla por sí solo. Acá ves los proyectos reales, el tipo de lenguaje que usan y qué tan activos son. Es la forma más genuina de evaluar la habilidad técnica de un desarrollador. Buscá por lenguaje de programación y chequeá los `commits`.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-4">💡</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">Comunidades (Stack Overflow, Discord, Slack)</h4>
+                                    <p class="text-slate-400">Más allá de LinkedIn y GitHub, los talentos IT viven en comunidades. <span class="font-bold">Stack Overflow</span> es un termómetro técnico donde se resuelven problemas. Los <span class="font-bold">Discord/Slack</span> son espacios de nicho donde se discuten proyectos, herramientas y se dan referencias. Participar o al menos monitorear estos espacios te da acceso a un `pool` de talento que no se ve en otras plataformas.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-800 rounded-lg shadow-lg p-6">
+                        <h3 class="text-2xl font-bold text-sky-400 mb-4">El Arte del Contacto</h3>
+                        <p class="text-slate-400 mb-6">Un buen mensaje no es una plantilla, es el inicio de una conversación. Seguí estas reglas de oro:</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-fuchsia-400 font-bold text-xl mr-4">1</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">Personalizá</h4>
+                                    <p class="text-slate-400">Demostrá que hiciste tu tarea. Mencioná un proyecto de su GitHub, un artículo que escribió o una respuesta interesante en Stack Overflow.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-fuchsia-400 font-bold text-xl mr-4">2</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">Sé Directo y Transparente</h4>
+                                    <p class="text-slate-400">No des rodeos. Decí quién sos, para qué empresa trabajas y qué estás buscando de forma clara y concisa.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-fuchsia-400 font-bold text-xl mr-4">3</span>
+                                <div>
+                                    <h4 class="font-semibold text-slate-200">Sé Breve y Respetá su Tiempo</h4>
+                                    <p class="text-slate-400">Su tiempo es valioso. Un mensaje corto y potente es mucho más efectivo que un email largo y genérico.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navData = [
+                { id: 'tab-about', title: 'Sobre mí', color: 'bg-about' },
+                { id: 'tab1', title: 'La Base del recruitment', color: 'bg-recruiter' },
+                { id: 'tab2', title: 'Challenge para Recruitment', color: 'bg-challenge' },
+                { id: 'tab3', title: 'Kit de Herramientas', color: 'bg-tools' }
+            ];
+
+            const navList = document.getElementById('nav-list');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const mainBody = document.getElementById('main-body');
+
+            navList.innerHTML = '';
+            
+            navData.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('mr-2');
+                li.innerHTML = `<a href="#" class="nav-link inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-sky-400 hover:border-sky-400" data-tab="${item.id}">${item.title}</a>`;
+                navList.appendChild(li);
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = {
+                'tab-about': 'bg-about',
+                'tab1': 'bg-recruiter',
+                'tab2': 'bg-challenge',
+                'tab3': 'bg-tools'
+            };
+
+            const switchTab = (tabId) => {
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+
+                tabContents.forEach(content => {
+                    content.style.display = 'none';
+                    if (content.id === tabId) {
+                        content.style.display = 'block';
+                    }
+                });
+
+                mainBody.classList.remove(...Object.values(sections), 'bg-slate-900');
+                mainBody.classList.add(sections[tabId]);
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    switchTab(this.getAttribute('data-tab'));
+                });
+            });
+
+            switchTab('tab-about');
+
+            const accordionData = [
+                // Desarrollo
+                { title: 'Front-end', icon: '🎨', content: 'Parte de una aplicación con la que los usuarios interactúan. Tecnologías clave: <span class="font-bold">HTML</span>, <span class="font-bold">CSS</span>, <span class="font-bold">JavaScript</span> y <span class="font-bold">frameworks</span> como <span class="font-bold">React</span>, <span class="font-bold">Angular</span> o <span class="font-bold">Vue</span>.' },
+                { title: 'Back-end', icon: '🗄️', content: 'Lógica invisible que procesa datos, gestiona bases de datos y servidores. Tecnologías clave: <span class="font-bold">Python</span> (<span class="font-bold">Django</span>, <span class="font-bold">Flask</span>), <span class="font-bold">Java</span> (<span class="font-bold">Spring</span>), <span class="font-bold">Node.js</span> (<span class="font-bold">Express</span>), <span class="font-bold">PHP</span>, <span class="font-bold">Ruby on Rails</span>.' },
+                { title: 'Full Stack', icon: '🛠️', content: 'Desarrolladores que trabajan tanto en el <span class="font-bold">front-end</span> como en el <span class="font-bold">back-end</span>. Son versátiles, pero su profundidad puede variar.' },
+                { title: 'Framework de Desarrollo', icon: '🧱', content: 'Conjunto de herramientas que provee una estructura para construir aplicaciones más rápido. Ejemplos: <span class="font-bold">React</span>, <span class="font-bold">Next.js</span>, <span class="font-bold">Angular</span>, <span class="font-bold">Django</span>, <span class="font-bold">Ruby on Rails</span>, <span class="font-bold">.NET</span>.' },
+                { title: 'Lenguaje de Programación', icon: '📝', content: 'El idioma con el que se escriben las instrucciones para una computadora. Ejemplos: <span class="font-bold">JavaScript</span>, <span class="font-bold">Python</span>, <span class="font-bold">Java</span>, <span class="font-bold">C#</span>, <span class="font-bold">Go</span>, <span class="font-bold">Swift</span>.' },
+                
+                // Infraestructura y DevOps
+                { title: 'DevOps', icon: '🤝', content: 'Una <span class="font-bold">cultura</span> y conjunto de prácticas que promueve la colaboración entre desarrollo (<span class="font-bold">Dev</span>) y operaciones (<span class="font-bold">Ops</span>) para <span class="font-bold">automatizar</span> y agilizar los procesos.' },
+                { title: 'CI/CD', icon: '🔄', content: '<span class="font-bold">Integración Continua</span> y <span class="font-bold">Despliegue Continuo</span>. Prácticas que permiten entregar cambios de código de forma frecuente y automatizada. Herramientas: <span class="font-bold">Jenkins</span>, <span class="font-bold">GitLab CI</span>, <span class="font-bold">GitHub Actions</span>.' },
+                { title: 'Servicios en la Nube', icon: '☁️', content: 'Servicios de IT accesibles a través de internet, sin necesidad de infraestructura física. Principales proveedores: <span class="font-bold">AWS</span>, <span class="font-bold">Google Cloud</span>, <span class="font-bold">Microsoft Azure</span>.' },
+                { title: 'Kubernetes', icon: '☸️', content: 'Plataforma de código abierto para automatizar el despliegue, escalado y gestión de aplicaciones en <span class="font-bold">contenedores</span>. Es fundamental en la <span class="font-bold">orquestación de microservicios</span>.' },
+                { title: 'Docker', icon: '🐳', content: 'Plataforma que permite empaquetar una aplicación con todas sus dependencias en un "<span class="font-bold">contenedor</span>". Facilita el despliegue en cualquier entorno.' },
+                { title: 'IaC (Infrastructure as Code)', icon: '📜', content: 'La práctica de gestionar y aprovisionar <span class="font-bold">infraestructura</span> (servidores, redes) a través de archivos de código en lugar de procesos manuales. Herramientas: <span class="font-bold">Terraform</span>, <span class="font-bold">Ansible</span>.' },
+                
+                // Seguridad Informática
+                { title: 'Ciberseguridad', icon: '🔒', content: 'Práctica de proteger sistemas, redes y programas de <span class="font-bold">ataques digitales</span>. Se enfoca en la <span class="font-bold">prevención</span>, <span class="font-bold">detección</span> y <span class="font-bold">respuesta</span> a amenazas.' },
+                { title: 'Zero Trust', icon: '🛡️', content: 'Un modelo de seguridad que asume que ninguna persona, dispositivo o red es <span class="font-bold">confiable</span> por defecto, sin importar dónde se encuentre. Exige la <span class="font-bold">verificación constante</span> para acceder a los recursos.' },
+                { title: 'SOC (Security Operations Center)', icon: '🚨', content: 'Equipo de profesionales que monitorea y analiza la <span class="font-bold">postura de seguridad</span> de una organización <span class="font-bold">24/7</span>. Su misión es detectar, analizar y responder a <span class="font-bold">incidentes</span>.' },
+                { title: 'Pentesting', icon: '🕵️‍♂️', content: '<span class="font-bold">Prueba de penetración</span>. Un ataque simulado autorizado para evaluar la seguridad de un sistema. El "<span class="font-bold">hacker ético</span>" busca vulnerabilidades para ayudar a corregirlas.' },
+
+                // IA y Data
+                { title: 'Data Engineer', icon: '🏗️', content: 'Construye y mantiene la <span class="font-bold">infraestructura</span> para recopilar, procesar y almacenar grandes volúmenes de datos. Habilita el trabajo de otros perfiles de datos.' },
+                { title: 'Data Analyst', icon: '📊', content: 'Analiza los datos para encontrar <span class="font-bold">patrones</span>, <span class="font-bold">tendencias</span> y generar reportes que ayuden en la toma de decisiones. Usa herramientas de visualización como <span class="font-bold">Power BI</span> o <span class="font-bold">Tableau</span>.' },
+                { title: 'Data Scientist', icon: '🧠', content: 'Usa modelos de <span class="font-bold">Machine Learning</span>, estadísticas avanzadas y algoritmos para hacer <span class="font-bold">predicciones</span> y generar <span class="font-bold">insights</span> complejos. A menudo trabaja con <span class="font-bold">Python</span> y librerías como <span class="font-bold">Pandas</span> o <span class="font-bold">Scikit-learn</span>.' },
+                { title: 'ETL', icon: '🚚', content: '<span class="font-bold">Extract</span>, <span class="font-bold">Transform</span>, <span class="font-bold">Load</span>. Proceso para extraer datos de múltiples fuentes, transformarlos para que sean consistentes y cargarlos en un almacén de datos (<span class="font-bold">Data Warehouse</span>).' },
+                { title: 'Machine Learning', icon: '🤖', content: 'Rama de la <span class="font-bold">IA</span> que se enfoca en el desarrollo de algoritmos que pueden <span class="font-bold">aprender de los datos</span> para hacer predicciones. Es el "<span class="font-bold">aprendizaje</span>" de las máquinas.' },
+                { title: 'LLM (Large Language Model)', icon: '💬', content: 'Son modelos de <span class="font-bold">IA</span> que pueden entender y generar <span class="font-bold">lenguaje humano</span>. Son la base de herramientas como <span class="font-bold">Gemini</span> y <span class="font-bold">GPT</span>, entre otras.' },
+                
+                // QA y Funcional
+                { title: 'QA Manual', icon: '🔎', content: 'Prueba el software manualmente, paso a paso, desde la perspectiva del usuario para encontrar errores y asegurar la <span class="font-bold">calidad</span>.' },
+                { title: 'QA Automation', icon: '🚀', content: 'Crea <span class="font-bold">scripts</span> y herramientas para <span class="font-bold">automatizar pruebas</span>, lo que permite una validación más rápida y eficiente. Herramientas populares: <span class="font-bold">Selenium</span>, <span class="font-bold">Cypress</span> y <span class="font-bold">Playwright</span>.' },
+                { title: 'Analista Funcional', icon: '📝', content: 'Traduce las necesidades del negocio en <span class="font-bold">requisitos técnicos</span> claros para el equipo de desarrollo. Es el puente entre el cliente y el equipo técnico.' },
+                { title: 'User Story', icon: '🗣️', content: 'Una descripción simple y concisa de una funcionalidad del software desde la perspectiva del usuario. Se usa en <span class="font-bold">metodologías ágiles</span>.' },
+
+                // Metodologías y Otros
+                { title: 'Metodología Ágil', icon: '🏃‍♂️', content: 'Conjunto de prácticas para el desarrollo de software que se basa en la <span class="font-bold">colaboración</span>, la <span class="font-bold">entrega incremental</span> y la <span class="font-bold">adaptación al cambio</span>. Ejemplos: <span class="font-bold">Scrum</span>, <span class="font-bold">Kanban</span>.' },
+                { title: 'Scrum', icon: '🏉', content: 'El <span class="font-bold">framework ágil</span> más popular. Se basa en ciclos cortos de trabajo (<span class="font-bold">Sprints</span>) y reuniones regulares (<span class="font-bold">dailies</span>, <span class="font-bold">retros</span>, <span class="font-bold">reviews</span>).' },
+                { title: 'Kanban', icon: '🎴', content: 'Otra <span class="font-bold">metodología ágil</span> que se centra en la visualización del flujo de trabajo en un tablero. El foco está en limitar el trabajo en curso (<span class="font-bold">WIP</span>) y la <span class="font-bold">mejora continua</span>.' }
+            ];
+
+            const accordionContainer = document.getElementById('accordion');
+            accordionData.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('mb-4', 'bg-slate-800', 'rounded-lg', 'shadow');
+                div.innerHTML = `
+                    <button class="accordion-toggle w-full text-left p-4 font-semibold text-slate-100 flex justify-between items-center hover:bg-slate-700 rounded-t-lg">
+                        <div class="flex items-center">
+                            <span class="text-xl mr-3">${item.icon}</span>
+                            <span>${item.title}</span>
+                        </div>
+                        <span class="icon-arrow transform transition-transform duration-300">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="px-4 pb-4 text-slate-400">
+                            <p>${item.content}</p>
+                        </div>
+                    </div>
+                `;
+                accordionContainer.appendChild(div);
+            });
+
+            document.querySelectorAll('.accordion-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const arrow = button.querySelector('.icon-arrow');
+                    
+                    const isOpen = content.classList.contains('open');
+
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('.accordion-toggle .icon-arrow').forEach(a => a.style.transform = 'rotate(0deg)');
+
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            const challenges = [
+                "Busca un <span class='font-bold'>Desarrollador Backend Senior</span> con 4+ años de experiencia en <span class='font-bold'>Python</span>, manejo de <span class='font-bold'>Django</span> y bases de datos <span class='font-bold'>PostgreSQL</span>. Valorable: experiencia con <span class='font-bold'>microservicios</span> y conocimientos de <span class='font-bold'>Docker</span>.",
+                "Necesitamos un <span class='font-bold'>Ingeniero Frontend</span> con experiencia sólida en <span class='font-bold'>React.js</span>, <span class='font-bold'>Redux</span> y <span class='font-bold'>TypeScript</span>. Debe tener un buen ojo para el diseño y experiencia trabajando con <span class='font-bold'>APIs REST</span>.",
+                "Se requiere un <span class='font-bold'>Arquitecto de Soluciones Cloud</span> con certificación en <span class='font-bold'>AWS</span> y experiencia demostrable en el diseño de arquitecturas escalables y seguras. Conocimientos de <span class='font-bold'>IaC</span> (<span class='font-bold'>Terraform</span>) es un plus.",
+                "Buscamos un <span class='font-bold'>Data Scientist</span> con experiencia en modelos de <span class='font-bold'>Machine Learning</span>, <span class='font-bold'>Python</span> (<span class='font-bold'>Pandas</span>, <span class='font-bold'>Scikit-learn</span>) y herramientas de visualización como <span class='font-bold'>Tableau</span> o <span class='font-bold'>PowerBI</span>.",
+                "Se busca un <span class='font-bold'>Desarrollador Móvil</span> para iOS con experiencia en <span class='font-bold'>Swift</span> y <span class='font-bold'>SwiftUI</span>. Se valorará la publicación de apps en la <span class='font-bold'>App Store</span> y conocimientos de <span class='font-bold'>Objective-C</span>.",
+                "Busca un <span class='font-bold'>QA Automation</span> para un equipo ágil. Debe tener experiencia en la creación de <span class='font-bold'>scripts de prueba</span> con <span class='font-bold'>Cypress</span> y <span class='font-bold'>JavaScript</span>, y conocimiento en la integración con <span class='font-bold'>CI/CD</span>.",
+                "Necesitamos un <span class='font-bold'>Analista Funcional</span> con experiencia en <span class='font-bold'>metodologías ágiles</span> (<span class='font-bold'>Scrum</span>). Debe saber redactar <span class='font-bold'>User Stories</span> y trabajar en estrecha colaboración con el equipo de desarrollo.",
+                "Se requiere un <span class='font-bold'>Ingeniero de Infraestructura</span> con experiencia en <span class='font-bold'>Kubernetes</span>, <span class='font-bold'>Docker</span> y plataformas <span class='font-bold'>Cloud</span> (<span class='font-bold'>Azure</span>). Se valora el conocimiento en <span class='font-bold'>automatización</span> con <span class='font-bold'>Ansible</span>.",
+                "Busca un <span class='font-bold'>Data Engineer</span> con experiencia en <span class='font-bold'>ETL</span>, <span class='font-bold'>Big Data</span> (<span class='font-bold'>Spark</span>) y bases de datos NoSQL (<span class='font-bold'>MongoDB</span>). Debe poder construir <span class='font-bold'>pipelines de datos</span> robustos.",
+                "Se busca un <span class='font-bold'>Especialista en Ciberseguridad</span> con experiencia en <span class='font-bold'>Pentesting</span> y conocimiento del modelo <span class='font-bold'>Zero Trust</span>. Debe ser capaz de identificar y mitigar vulnerabilidades en sistemas y redes.",
+            ];
+
+            const generateChallengeBtn = document.getElementById('generate-challenge');
+            const challengeCard = document.getElementById('challenge-card');
+            const challengeText = document.getElementById('challenge-text');
+
+            generateChallengeBtn.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * challenges.length);
+                challengeText.innerHTML = challenges[randomIndex];
+                challengeCard.classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
